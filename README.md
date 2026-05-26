@@ -1,8 +1,8 @@
 <div align="center">
 
-# 📋 게시판 프로젝트
+# 📋 Board Project
 
-**Spring Boot로 만든 게시판 웹 애플리케이션**
+**A bulletin board web application built with Spring Boot**
 
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
@@ -12,35 +12,35 @@
 
 <br/>
 
-> 게시글 작성 · 조회 · 수정 · 삭제와 댓글 기능을 갖춘 풀스택 게시판 프로젝트입니다.
+> A full-stack board project featuring post creation, viewing, editing, deletion, and comment functionality.
 
 </div>
 
 ---
 
-## 📸 화면 미리보기
+## 📸 Screenshots
 
-| 게시판 목록 |
+| Board List |
 |:---:|
 | <img width="1204" height="817" alt="image" src="https://github.com/user-attachments/assets/59c19bea-2c3f-4477-a34c-122f9e18052c" /> |
 
-> `localhost:8080/articles` 에서 확인 가능합니다.
+> Available at `localhost:8080/articles`
 
 ---
 
-## ✨ 주요 기능
+## ✨ Features
 
-- 📝 **게시글 CRUD** — 게시글 작성, 조회, 수정, 삭제
-- 💬 **댓글 기능** — 각 게시글에 댓글 작성 및 조회
-- 🔗 **REST API** — RESTful 방식의 API 설계
-- 🗄️ **H2 인메모리 DB** — 개발 환경용 내장 데이터베이스
-- 🌐 **Thymeleaf 템플릿** — 서버사이드 렌더링
+- 📝 **Post CRUD** — Create, read, update, and delete posts
+- 💬 **Comments** — Write and view comments on each post
+- 🔗 **REST API** — RESTful API design
+- 🗄️ **H2 In-Memory DB** — Embedded database for development
+- 🌐 **Thymeleaf Templates** — Server-side rendering
 
 ---
 
-## 🛠️ 기술 스택
+## 🛠️ Tech Stack
 
-| 구분 | 기술 |
+| Category | Technology |
 |:---:|:---|
 | **Backend** | Spring Boot, Spring MVC, Spring Data JPA |
 | **Database** | H2 (In-Memory), Hibernate |
@@ -50,73 +50,67 @@
 
 ---
 
-## 🗂️ 프로젝트 구조
+## 🗂️ Project Structure
 
-```
 first-project/
 ├── src/
 │   └── main/
 │       ├── java/
 │       │   └── com/example/firstproject/
-│       │       ├── controller/       # MVC 컨트롤러 & REST API
-│       │       ├── dto/              # 데이터 전송 객체
-│       │       ├── entity/           # JPA 엔티티 (Article, Comment)
-│       │       ├── repository/       # Spring Data JPA 레포지토리
-│       │       └── service/          # 비즈니스 로직
+│       │       ├── controller/       # MVC Controllers & REST API
+│       │       ├── dto/              # Data Transfer Objects
+│       │       ├── entity/           # JPA Entities (Article, Comment)
+│       │       ├── repository/       # Spring Data JPA Repositories
+│       │       └── service/          # Business Logic
 │       └── resources/
-│           ├── templates/            # Thymeleaf HTML 템플릿
-│           ├── static/               # CSS, JS, 이미지
+│           ├── templates/            # Thymeleaf HTML Templates
+│           ├── static/               # CSS, JS, Images
 │           ├── application.properties
-│           └── data.sql              # 초기 데이터
+│           └── data.sql              # Initial Data
 └── build.gradle
-```
 
 ---
 
-## ⚙️ 실행 방법
+## ⚙️ Getting Started
 
-### 1. 프로젝트 클론
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/{username}/first-project.git
 cd first-project
 ```
 
-### 2. 애플리케이션 실행
+### 2. Run the Application
 
 ```bash
 ./gradlew bootRun
 ```
 
-### 3. 브라우저 접속
+### 3. Open in Browser
 
-```
 http://localhost:8080/articles
-```
-
-> H2 콘솔: `http://localhost:8080/h2-console`
+> H2 Console: `http://localhost:8080/h2-console`  
 > JDBC URL: `jdbc:h2:mem:testdb`
 
 ---
 
-## 📡 API 엔드포인트
+## 📡 API Endpoints
 
-| Method | URL | 설명 |
+| Method | URL | Description |
 |:---:|:---|:---|
-| `GET` | `/articles` | 게시글 목록 조회 |
-| `GET` | `/articles/{id}` | 게시글 단건 조회 |
-| `POST` | `/articles` | 게시글 생성 |
-| `PATCH` | `/articles/{id}` | 게시글 수정 |
-| `DELETE` | `/articles/{id}` | 게시글 삭제 |
-| `GET` | `/api/articles/{id}/comments` | 댓글 목록 조회 |
-| `POST` | `/api/articles/{id}/comments` | 댓글 생성 |
-| `DELETE` | `/api/comments/{id}` | 댓글 삭제 |
+| `GET` | `/articles` | Get all posts |
+| `GET` | `/articles/{id}` | Get a single post |
+| `POST` | `/articles` | Create a post |
+| `PATCH` | `/articles/{id}` | Update a post |
+| `DELETE` | `/articles/{id}` | Delete a post |
+| `GET` | `/api/articles/{id}/comments` | Get comments for a post |
+| `POST` | `/api/articles/{id}/comments` | Create a comment |
+| `DELETE` | `/api/comments/{id}` | Delete a comment |
 
 ---
 
-## 🗃️ 데이터베이스 ERD
+## 🗃️ Database ERD
 
-```
 ┌─────────────┐       ┌──────────────┐
 │   article   │       │   comment    │
 ├─────────────┤       ├──────────────┤
@@ -124,23 +118,22 @@ http://localhost:8080/articles
 │ title       │   └───│ article_id   │
 │ content     │       │ nickname     │
 └─────────────┘       │ body         │
-                      └──────────────┘
-```
+└──────────────┘
 
 ---
 
-## 📚 학습 내용
+## 📚 What I Learned
 
-이 프로젝트를 통해 학습한 개념들입니다.
+Concepts covered through this project:
 
-- [x] Spring Boot 프로젝트 구조 이해
-- [x] MVC 패턴 적용
-- [x] Spring Data JPA를 이용한 CRUD
-- [x] REST API 설계 및 구현
-- [x] 엔티티 간 연관관계 매핑 (1:N)
-- [x] Thymeleaf를 이용한 뷰 렌더링
-- [ ] 예외 처리 (Exception Handling)
-- [ ] 트랜잭션 처리
+- [x] Understanding Spring Boot project structure
+- [x] Applying the MVC pattern
+- [x] CRUD operations with Spring Data JPA
+- [x] REST API design and implementation
+- [x] Entity relationship mapping (1:N)
+- [x] View rendering with Thymeleaf
+- [ ] Exception Handling
+- [ ] Transaction Management
 
 ---
 
