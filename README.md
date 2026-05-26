@@ -52,6 +52,7 @@
 
 ## 🗂️ Project Structure
 
+```text
 first-project/
 ├── src/
 │   └── main/
@@ -68,6 +69,7 @@ first-project/
 │           ├── application.properties
 │           └── data.sql              # Initial Data
 └── build.gradle
+```
 
 ---
 
@@ -111,6 +113,8 @@ http://localhost:8080/articles
 
 ## 🗃️ Database ERD
 
+```text
+
 ┌─────────────┐       ┌──────────────┐
 │   article   │       │   comment    │
 ├─────────────┤       ├──────────────┤
@@ -118,8 +122,9 @@ http://localhost:8080/articles
 │ title       │   └───│ article_id   │
 │ content     │       │ nickname     │
 └─────────────┘       │ body         │
-└──────────────┘
+                      └──────────────┘
 
+```
 ---
 
 ## 📚 What I Learned
