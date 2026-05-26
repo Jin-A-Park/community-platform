@@ -1,21 +1,193 @@
 {{>layouts/header}}
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Title</th>
-        <th scope="col">Content</th>
-    </tr>
-    </thead>
-    <tbody>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --ink: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --bg: #fafaf8;
+    --surface: #ffffff;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --danger: #dc2626;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  .page-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .page-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .page-subtitle {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .btn-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--ink);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-new:hover { background: #333; transform: translateY(-1px); }
+  .btn-new::before { content: '+'; font-size: 1.1rem; font-weight: 300; }
+
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .article-row {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+    margin-bottom: 6px;
+  }
+  .article-row:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    transform: translateX(3px);
+  }
+
+  .article-id {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 500;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 8px;
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+
+  .article-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .article-preview {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 480px;
+  }
+
+  .article-arrow {
+    color: var(--muted);
+    font-size: 1.1rem;
+    transition: color 0.2s, transform 0.2s;
+  }
+  .article-row:hover .article-arrow { color: var(--accent); transform: translateX(3px); }
+
+  .empty-state {
+    text-align: center;
+    padding: 80px 24px;
+    color: var(--muted);
+  }
+  .empty-state .empty-icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.3; }
+  .empty-state p { font-size: 0.9rem; }
+
+  .list-header {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 16px;
+    padding: 0 20px 10px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+</style>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">게시판</h1>
+      <p class="page-subtitle">Articles</p>
+    </div>
+    <a href="/articles/new" class="btn-new">새 글 작성</a>
+  </div>
+
+  <div class="list-header">
+    <span>No.</span>
+    <span>제목 / 내용</span>
+    <span></span>
+  </div>
+
+  <div class="article-list">
     {{#articleList}}
-        <tr>
-            <th scope="row">{{id}}</th>
-            <td><a href="/articles/{{id}}">{{title}}</a></td>
-            <td>{{content}}</td>
-        </tr>
+    <a href="/articles/{{id}}" class="article-row">
+      <span class="article-id">#{{id}}</span>
+      <div>
+        <div class="article-title">{{title}}</div>
+        <div class="article-preview">{{content}}</div>
+      </div>
+      <span class="article-arrow">→</span>
+    </a>
     {{/articleList}}
-    </tbody>
-</table>
-<a href="/articles/new">New Article</a>
+    {{^articleList}}
+    <div class="empty-state">
+      <div class="empty-icon">📄</div>
+      <p>아직 작성된 글이 없습니다.</p>
+    </div>
+    {{/articleList}}
+  </div>
+</div>
+
 {{>layouts/footer}}
