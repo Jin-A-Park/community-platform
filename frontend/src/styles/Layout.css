@@ -14,11 +14,12 @@
 
 .navbar-brand {
   font-family: 'Noto Serif KR', serif;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--ink);
   cursor: pointer;
   letter-spacing: -0.5px;
+  font-style: italic;
 }
 
 .navbar-menu {
@@ -28,9 +29,9 @@
 }
 
 .nav-btn {
-  padding: 8px 18px;
+  padding: 7px 16px;
   border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 500;
   font-family: 'DM Sans', sans-serif;
   cursor: pointer;
@@ -43,14 +44,20 @@
   color: var(--muted);
   border-color: transparent;
 }
-.nav-btn-ghost:hover { background: var(--bg); color: var(--ink); }
+.nav-btn-ghost:hover {
+  background: var(--bg);
+  color: var(--ink);
+}
 
 .nav-btn-primary {
-  background: var(--accent);
+  background: var(--ink);
   color: white;
-  border-color: var(--accent);
+  border-color: var(--ink);
 }
-.nav-btn-primary:hover { background: #1d4ed8; }
+.nav-btn-primary:hover {
+  background: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
 /* Footer */
 .footer {
@@ -60,12 +67,13 @@
   padding: 20px 40px;
   border-top: 1px solid var(--border);
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
 }
 
 .footer-links {
   display: flex;
-  gap: 16px;
+  gap: 20px;
 }
 
 .footer-links a {
@@ -73,4 +81,4 @@
   text-decoration: none;
   transition: color 0.2s;
 }
-.footer-links a:hover { color: var(--accent); }
+.footer-links a:hover { color: var(--ink); }
