@@ -1,11 +1,15 @@
-function Footer(){
-    return(
-        <div className="mb-5 container-fluid">
-            <hr/>
-            <p> ⓒ CloudStudying | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
-        </div>
-    );
+import '../../styles/Layout.css';
 
+function Footer() {
+  return (
+    <footer className="footer">
+      <p>ⓒ 2026 Community Platform</p>
+      <div className="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </footer>
+  );
 }
 
 export default Footer;

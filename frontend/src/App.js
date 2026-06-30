@@ -2,6 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import Home from './components/Home';
+
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
@@ -11,6 +16,8 @@ import ArticleIndex from './components/articles/Index';
 import ArticleEdit from './components/articles/Edit';
 
 import Comments from './components/comments/Comments';
+
+import { AuthProvider } from './context/AuthContext';
 
 {
   /*
@@ -28,16 +35,23 @@ import Comments from './components/comments/Comments';
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/articles" element={<ArticleIndex/>} />
-          <Route path="/articles/new" element={<ArticleNew/>} />
-          <Route path="/articles/:id" element={<ArticleShow/>} />
-          <Route path="/articles/:id/edit" element={<ArticleEdit/>} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+
+            <Route path="/articles" element={<ArticleIndex/>} />
+            <Route path="/articles/new" element={<ArticleNew/>} />
+            <Route path="/articles/:id" element={<ArticleShow/>} />
+            <Route path="/articles/:id/edit" element={<ArticleEdit/>} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </AuthProvider>
       {/*
         <Show article={article} commentDtos={commentDtos} />
         <New />

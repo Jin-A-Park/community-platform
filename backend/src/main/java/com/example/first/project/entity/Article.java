@@ -19,6 +19,8 @@ public class Article {
     private String title;
     @Column
     private String content;
+    @Column
+    private String author;
 
     public void patch(Article article) {
         if(article.title != null){
